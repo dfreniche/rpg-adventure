@@ -16,7 +16,7 @@
 void wait_for_enter_key() {
     // Is enter pressed?
 
-   while (!cpct_isKeyPressed(Key_Return)) {
+   while (!cpct_isKeyPressed(Key_Return) && !cpct_isKeyPressed(Key_Enter)) {
       cpct_scanKeyboard();
    }
 }
