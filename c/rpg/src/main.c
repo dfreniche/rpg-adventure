@@ -32,11 +32,12 @@ typedef enum {
    PICK_WEAPON= 7, 
    SELECT_1_WEAPON = 8,
    SELECT_2_WEAPON = 9, 
-   SELECT_3_WEAPON = 10, 
-   DO_NOTHING = 11
+   SELECT_3_WEAPON = 10,
+   HELP = 11, 
+   DO_NOTHING = 12
 } Game_actions;
 
-#define GAME_ACTIONS 11
+#define GAME_ACTIONS 12
 
 Game_actions read_keyboard(enum cpct_e_keyID game_action_keys[], Game_actions game_actions[]);
 void game_loop();
@@ -58,6 +59,7 @@ const enum cpct_e_keyID game_action_keys[GAME_ACTIONS] = {
    Key_1, 
    Key_2,
    Key_3,
+   Key_H,
    Key_Space
 };
 
@@ -72,6 +74,7 @@ const Game_actions game_actions[GAME_ACTIONS] = {
    SELECT_1_WEAPON, 
    SELECT_2_WEAPON, 
    SELECT_3_WEAPON, 
+   HELP,
    DO_NOTHING
 };
 
@@ -94,7 +97,6 @@ void main(void) {
       show_presentation(VERSION);
       wait_for_enter_key();
    }
-
 }
 
 // Main game loop
@@ -185,6 +187,10 @@ void game_loop() {
       case SELECT_3_WEAPON:
          player.current_weapon = 2;
          break; 
+      case HELP:
+         show_help();
+         continue;
+         break;
       default:
          break;
       }

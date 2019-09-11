@@ -54,11 +54,28 @@ void show_header() {
     pen(2);
     puts(" R P G  G A M E ");
     pen(1);
-    // for (int i=1; i<4; i++) {
-    //     cpct_drawStringM1("========================================", cpct_getScreenPtr(CPCT_VMEM_START, 0, i));
-    // }
 }
 
 void monster_attack_effect() {
     border(3, 6);
+}
+
+void show_help() {
+    u16 fw_pointer = cpct_disableFirmware();
+    cpct_setDrawCharM1(2,1);
+    cpct_drawStringM1("========================================", cpct_getScreenPtr(CPCT_VMEM_START, 0, 8));
+
+    for (int i=2; i<6; i++) {
+        cpct_drawStringM1("=                                      =", cpct_getScreenPtr(CPCT_VMEM_START, 0, i*8));
+    }
+
+    cpct_drawStringM1("========================================", cpct_getScreenPtr(CPCT_VMEM_START, 0, 6*8));
+
+
+    cpct_drawStringM1("Move(O/P/Q/A) - Select Weapon(1/2/3)", cpct_getScreenPtr(CPCT_VMEM_START, 2*2, 2*8)); // locate(2,2)
+    cpct_drawStringM1("Attack (Enter) - Defend (D)", cpct_getScreenPtr(CPCT_VMEM_START, 2*2, 3*8));
+    cpct_drawStringM1("Wait (Spc) - Help (H)", cpct_getScreenPtr(CPCT_VMEM_START, 2*2, 4*8));
+    cpct_drawStringM1("Enter to close", cpct_getScreenPtr(CPCT_VMEM_START, 2*2, 5*8));
+    cpct_reenableFirmware(fw_pointer);
+    wait_for_enter_key();
 }
