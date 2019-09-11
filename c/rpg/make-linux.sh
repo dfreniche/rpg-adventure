@@ -20,4 +20,4 @@ $IDSK $TARGET -i $PRESENTATION_FILE -t 0
 echo "Success 🎉, let's launch RVM 🚀"
 
 # LAUNCH RVM
-/mnt/c/Users/dfren/Downloads/RetroVirtualMachine.2.0.beta-1.r7.windows.x64/RetroVirtualMachine.exe -insert $TARGET  --boot=cpc6128@es -command="run\"rpg\""
+/mnt/c/Users/dfren/bin/rvm/RetroVirtualMachine.exe -w -insert $TARGET  --boot=cpc6128@es -command="run\"rpg\"\n"
