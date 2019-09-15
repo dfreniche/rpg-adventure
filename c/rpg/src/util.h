@@ -31,10 +31,6 @@ void paper(u8 color1);
 // using FIRMWARE
 void pen (u8 myInk);
 
-// symbol: redefines character at position `charNumber` using 8 bytes
-// using FIRMWARE
-void symbol(u8 charNumber, u8 b0, u8 b1, u8 b2, u8 b3, u8 b4, u8 b5, u8 b6, u8 b7);
-
 // repeat_print: prints s times times :-)
 void repeat_print(char *s, u8 times);
 
@@ -42,5 +38,16 @@ void repeat_print(char *s, u8 times);
 void repeat_print_char(char c, u8 times);
 
 u8 generate_random_number(u8 limit);
+
+/*  Works like the SYMBOL AFTER sentence in BASIC
+ * v1.1 Firmware version
+ * c: 1st character we're going to redefine. SYMBOL AFTER 250, c == 250
+ * matrix_address: pointer to the memory address where 
+ */
+void symbol_after_11(u8 c, u16 matrix_address);
+
+// symbol: redefines character at position `charNumber` using 8 bytes
+// using FIRMWARE
+void symbol(u8 charNumber, u8 b0, u8 b1, u8 b2, u8 b3, u8 b4, u8 b5, u8 b6, u8 b7);
 
 #endif

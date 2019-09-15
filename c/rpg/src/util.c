@@ -69,21 +69,6 @@ void pen (u8 myInk) {
    putchar (myInk);
 }
 
-// symbol: redefines character at position `charNumber` using 8 bytes
-// using FIRMWARE
-void symbol(u8 charNumber, u8 b0, u8 b1, u8 b2, u8 b3, u8 b4, u8 b5, u8 b6, u8 b7) {
-    putchar(EM);
-    putchar(charNumber);
-    putchar(b0);
-    putchar(b1);
-    putchar(b2);
-    putchar(b3);
-    putchar(b4);
-    putchar(b5);
-    putchar(b6);
-    putchar(b7);
-}
-
 // repeat_print: prints s times times :-)
 void repeat_print(char *s, u8 times) {
     for (int i=0; i<times; i++) {
@@ -100,4 +85,34 @@ void repeat_print_char(char c, u8 times) {
 
 u8 generate_random_number(u8 limit) {
     return (cpct_rand() % limit) + 1;
+}
+
+/*  Works like the SYMBOL AFTER sentence in BASIC
+ * v1.1 Firmware version
+ * c: 1st character we're going to redefine. SYMBOL AFTER 250, c == 250
+ * matrix_address: pointer to the memory address where 
+ */
+void symbol_after_11(u8 c, u16 matrix_address) {
+    // note: we're putting c in the address 0xB734. That's why we tell the compiler this is a u8 pointer
+    // but then we derefence the pointer telling the compiler c is a value, not a memory address
+    // here instead of a pointer variable we're using an inmediate with a memory address
+    // we're putting c in the memory address 0xB734
+    *((u8 *)0xB734)  = c;               // 1st character we're going to redefine
+    *((u8 *)0xB735)  = 0xFF;            // have to be set to indicate a matrix is following
+    *((u16 *)0xB736) = matrix_address;  // this is a memory address. Memory addresses are 16 bit long
+}
+
+// symbol: redefines character at position `charNumber` using 8 bytes
+// using FIRMWARE
+void symbol(u8 charNumber, u8 b0, u8 b1, u8 b2, u8 b3, u8 b4, u8 b5, u8 b6, u8 b7) {
+    putchar(EM);
+    putchar(charNumber);
+    putchar(b0);
+    putchar(b1);
+    putchar(b2);
+    putchar(b3);
+    putchar(b4);
+    putchar(b5);
+    putchar(b6);
+    putchar(b7);
 }
