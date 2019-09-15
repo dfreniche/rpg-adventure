@@ -121,9 +121,9 @@ void game_loop() {
    main_room.padding_x = 15;
    main_room.padding_y = 5;
 
-   initialize_game_character(&player, 100, 10, 10, 248, "Diego");
+   initialize_game_character(&player, 100, 10, 10, PLAYER_SPRITE, "Diego");
    
-   initialize_game_character(&monster, 100, 10, 10, 225, "Monster");
+   initialize_game_character(&monster, 100, 10, 10, ENEMY_SPRITE, "Monster");
 
    // Game loop starts
    cls();

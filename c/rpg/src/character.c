@@ -9,10 +9,12 @@ void redefine_character_sprites() {
    //           "call    $f7e9;"     // symbol after 240
    //  );
 
+   symbol_after_11(PLAYER_SPRITE, 0xA000);
+
    // Player
-   symbol(PLAYER_SPRITE, 56,108,84,238,198,186,254,170);
+   symbol(PLAYER_SPRITE, 56,59,59,18,126,18,124,68);
    // MONSTER
-   symbol(ENEMY_SPRITE, 56,59,59,18,126,18,124,68);
+   symbol(ENEMY_SPRITE, 56,108,84,238,198,186,254,170);
 }
 
 
