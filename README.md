@@ -23,6 +23,8 @@ Yep, grab latest disc images here:
 - [ ] test ASM with C
 - [ ] try to redefine characters in C [link](http://www.cpcwiki.eu/forum/programming/how-to-redefine-characters-in-cassembly/)
 - [ ] remove so much text from screen
+- [ ] adopt same style for coding as cpct_telera [snake case](https://en.wikipedia.org/wiki/Snake_case)
+- [ ] add Unit Testing framework
 - [ ] make map bit bigger
 - [ ] Add more enemies
 - [ ] Add game over screen / end of game screen
